@@ -42,10 +42,40 @@ SELECT * FROM sys.database_principals WHERE type_desc = 'EXTERNAL_USER'
 ```
 
 
-# Python app
+# Python app (building from directory)
 
 ## Installing requirement
 
-```
- pip install -r requirements.txt
+```bash
+    pip install -r requirements.txt
 ``` 
+
+## Running the app
+
+You need the following service principal environment variables:
+
+```bash
+    export AZ_TENANT_ID="your_tenant_id"
+    export AZ_CLIENT_ID="your_client_id"
+    export AZ_CLIENT_SECRET="your_client_secret"
+    export AZ_SERVER="your_server"
+    export AZ_DATABASE="your_database"
+```
+
+Now run the app:
+
+```bash
+    python app.py
+```
+
+## Containerize the app
+
+```bash
+    docker build -t moimhossain/python-odbc-azure-sql:beta .
+```
+
+## Running the container
+
+```bash
+    docker run --rm -e AZ_TENANT_ID="your_tenant_id" -e AZ_CLIENT_ID="your_client_id" -e AZ_CLIENT_SECRET="your_client_secret" -e AZ_SERVER="your_server" -e AZ_DATABASE="your_database" moimhossain/python-odbc-azure-sql:beta
+```
