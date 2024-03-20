@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pyodbc-demo-pod
+  namespace: workload-demo
+spec:
+  containers:
+  - name: pyodbc-demo-container
+    image: moimhossain/pyodbc-demo:v1
+    env:
+    - name: AZ_TENANT_ID
+      value: ""
+    - name: AZ_CLIENT_ID
+      value: ""
+    - name: AZ_SERVER
+      value: ""
+    - name: AZ_DATABASE
+      value: ""    
+  serviceAccountName: workload-demo-service-account

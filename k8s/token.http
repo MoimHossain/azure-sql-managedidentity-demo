@@ -1,0 +1,13 @@
+
+@tenantId=YOUR_TENANT_ID
+@clientId=YOUR_CLIENT_ID_OF_MANAGED_IDENTITY
+
+###
+POST https://login.microsoftonline.com:443/{{tenantId}}/oauth2/v2.0/token 
+Content-Type: application/x-www-form-urlencoded
+
+scope=https%3A%2F%2Fdatabase.windows.net%2F.default
+&client_id={{clientId}}
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyXXX
+&grant_type=client_credentials

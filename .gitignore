@@ -400,3 +400,5 @@ msodbcsql18_18.3.2.1-1_amd64.apk
 msodbcsql18_18.3.2.1-1_amd64.sig
 mssql-tools18_18.3.1.1-1_amd64.apk
 mssql-tools18_18.3.1.1-1_amd64.sig
+service-principal/kubectl.sha256
+service-principal/kubectl
