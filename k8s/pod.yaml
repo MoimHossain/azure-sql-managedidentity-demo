@@ -5,15 +5,26 @@ metadata:
   namespace: workload-demo
 spec:
   containers:
-  - name: pyodbc-demo-container
-    image: moimhossain/pyodbc-demo:v1
+  - name: pyodbc-demo-container    
+    image: moimhossain/python-odbc-azure-sql:v1        
+    imagePullPolicy: Always
+    volumeMounts:
+    - name: sa-token
+      mountPath: /var/run/secrets/tokens
     env:
     - name: AZ_TENANT_ID
-      value: ""
+      value: "XXXX"
     - name: AZ_CLIENT_ID
-      value: ""
+      value: "XXXX"
     - name: AZ_SERVER
-      value: ""
+      value: "tcp:XXXXX.database.windows.net,1433"
     - name: AZ_DATABASE
-      value: ""    
+      value: "XXXX"    
   serviceAccountName: workload-demo-service-account
+  volumes:
+  - name: sa-token
+    projected:
+      sources:
+      - serviceAccountToken:
+          path: sa-token
+          expirationSeconds: 1000          
